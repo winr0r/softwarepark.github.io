@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exampleお祝いページ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f8ff;
+            color: #333;
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        h1, p {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1.5s ease-out forwards;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #4caf50;
+            animation-delay: 0.5s;
+        }
+
+        p {
+            font-size: 1.5rem;
+            margin-top: 20px;
+            animation-delay: 1s;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* コピーライトのスタイル */
+        .copyright {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            font-size: 14px;
+            color: #888;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 5px 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Exampleお祝いページ</h1>
+    <p>このページをご覧いただきありがとうございます！</p>
+    <p>おめでとうございます🎉</p>
+
+    <!-- コピーライト -->
+    <div class="copyright">
+        Copyright © 2024 SoftwarePark All Rights Reserved.
+    </div>
+</body>
+</html>
+

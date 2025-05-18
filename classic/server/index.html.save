@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+<title>Server詳細ページ</title>
+</head>
+<body>
+<h1>サーバー詳細</h1>
+</body>
+</html>
+<p><strong>サーバーで使用しているCPU：インテル® Celeron® プロセッサー 900</strong></p>
+<p><strong>サーバーのメモリ数：4GB</strong></p>

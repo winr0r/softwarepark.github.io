@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>くじ引きツール</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .container { max-width: 600px; margin: 0 auto; text-align: center; }
+        .results { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="title" onclick="incrementClickCount()">くじ引きツール</h1>
+        <label for="range">数字の範囲:</label>
+        <input type="number" id="min" placeholder="最小値">
+        <input type="number" id="max" placeholder="最大値">
+        <button onclick="drawNumber()">数字を抽選</button>
+        <br><br>
+        <label for="list">リスト:</label>
+        <textarea id="list" placeholder="例:
+田中
+鈴木
+佐藤" rows="4" cols="30"></textarea>
+        <button onclick="drawFromList()">リストから抽選</button>
+        <br><br>
+        <h2>結果</h2>
+        <div id="results" class="results"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+<script>let drawnNumbers = new Set();
+let drawnNames = new Set();
+let clickCount = 0;
+let specialName = "";
+
+function incrementClickCount() {
+    clickCount++;
+    if (clickCount === 5) {
+        specialName = prompt("出やすくしたい名前を入力してください:");
+        alert(`${specialName}が出やすく設定されました`);
+    }
+}
+
+function drawNumber() {
+    const min = parseInt(document.getElementById('min').value);
+    const max = parseInt(document.getElementById('max').value);
+    if (isNaN(min) || isNaN(max) || min > max) {
+        alert('正しい範囲を入力してください');
+        return;
+    }
+    let number;
+    do {
+        number = Math.floor(Math.random() * (max - min + 1)) + min;
+    } while (drawnNumbers.has(number));
+    drawnNumbers.add(number);
+    document.getElementById('results').innerHTML += `<p>${number}</p>`;
+}
+
+function drawFromList() {
+    const list = document.getElementById('list').value.split('\n').map(name => name.trim()).filter(name => name !== "");
+    if (list.length === 0) {
+        alert('リストを入力してください');
+        return;
+    }
+    let weightedList = [];
+    list.forEach(name => {
+        let weight = 1; // デフォルトの重み
+        if (name === specialName) weight = 5; // 特定の名前が出やすくなるように重みを増やす
+        for (let i = 0; i < weight; i++) {
+            weightedList.push(name);
+        }
+    });
+    let name;
+    do {
+        name = weightedList[Math.floor(Math.random() * weightedList.length)];
+    } while (drawnNames.has(name));
+    drawnNames.add(name);
+    document.getElementById('results').innerHTML += `<p>${name}</p>`;
+}
+
+//# sourceURL=userscript.js
+</script>
+</body>
+</html>
+    <p class="footer">Copyright © 2024 SoftwarePark All Rights Reserved.</p>
