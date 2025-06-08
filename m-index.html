@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Internet Freedom</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #0066cc;
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+        a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .section {
+            background-color: #ffffff;
+            border: 1px solid #dddddd;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .section strong {
+            font-size: 18px;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #ffffff;
+            background-color: #99cc33;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            text-align: center;
+        }
+        .button:hover {
+            background-color: #88bb22;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #888888;
+        }
+    </style>
+</head>
+<body>
+    <h1>Internet Freedom へようこそ</h1>
+    
+    <div class="section">
+        <div>
+            <strong>Internet Freedomの活動方針はこちらから</strong>
+        </div>
+        <a class="button" href="https://inter-freedom.f5.si/001.html">移動する</a>
+    </div>
+    <div class="section">
+        <div>
+            <strong>Internet Freedom 「個人情報を守るためにできること」はこちら</strong>
+        </div>
+        <a class="button" href="https://inter-freedom.f5.si/002.html">移動する</a>
+    </div>
+
+    <p class="footer">サーバーはGithubを利用しています</p>
+    <p class="footer">当サイトは、SoftwareParkの姉妹サイトです</p>
+    <p class="footer">Copyright © 2024 SoftwarePark All Rights Reserved.</p>
+</body>
+</html>
+
+<div id="weather">
+    <strong>現在の天気:</strong>
+    <p id="weather-info">読み込み中...</p>
+</div>
+
+<script>
+    const apiKey = '0334f2158b2712ba2a79c31048296be8'; // OpenWeatherのAPIキーに置き換えてください
+    const city = 'Tokyo'; // 他の都市名にも変更可
+    const countryCode = 'jp';
+
+    async function fetchWeather() {
+        try {
+            const res = await fetch(
+                `https://api.openweathermap.org/data/2.5/weather?q=${city},${countryCode}&appid=${apiKey}&units=metric&lang=ja`
+            );
+            const data = await res.json();
+            if (data && data.weather && data.weather.length > 0) {
+                const description = data.weather[0].description;
+                const temp = data.main.temp;
+                document.getElementById('weather-info').textContent = `${description}、${temp}°C`;
+            } else {
+                document.getElementById('weather-info').textContent = '天気情報を取得できませんでした。';
+            }
+        } catch (err) {
+            document.getElementById('weather-info').textContent = '天気取得エラー。';
+            console.error(err);
+        }
+    }
+
+    fetchWeather();
+</script>
