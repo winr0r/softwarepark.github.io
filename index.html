@@ -100,6 +100,27 @@
     </div>
 
 
+    <!-- idiotリンクを差し込む場所 -->
+    <div id="idiotLink"></div>
+
+    <p class="footer">サーバー詳細:Github Pages</p>
+    <p class="footer">Copyright © 2024 SoftwarePark</p>
+
+    <script>
+    // URLのクエリをチェック
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("youareanidiot") === "true") {
+        document.getElementById("idiotLink").innerHTML = `
+            <a href="idiot.html" class="button" style="background-color:red;"
+               onclick="return confirm('you are an idiotを他人のPCなどで実行しないでください。いかなる損害があっても、責任を負いません。続行しますか？');">
+               You are an idiot for web
+            </a>
+        `;
+    }
+</script>
+</body>
+</html>
+
 
     <p class="footer">サーバー詳細:Github Pages</a></p>
     <p class="footer">※互換性重視のXP向けのHTMLで作っています。古いデバイスでもアクセスできます。</p>
@@ -110,4 +131,3 @@
 
 </body>
 </html>
-
