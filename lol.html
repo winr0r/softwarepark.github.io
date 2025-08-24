@@ -7,9 +7,10 @@
         body {
             margin: 0;
             background: black url("idiot.gif") center center no-repeat;
-            background-size: contain; /* 4:3比率 */
+            background-size: contain;
             height: 100vh;
             width: 100vw;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -19,10 +20,23 @@
     </audio>
 
     <script>
+        // Eキーでウィンドウを閉じる
+        document.addEventListener("keydown", function (event) {
+            if (event.key.toLowerCase() === "e") {
+                try {
+                    window.close();
+                } catch (e) {
+                    console.log("ウィンドウを閉じられません:", e);
+                }
+            }
+        });
+
+        // 音楽再生
         const audio = document.getElementById("bgm");
         audio.muted = false;
         audio.play().catch(e => console.log("音楽再生エラー:", e));
 
+        // ウィンドウ移動ロジック
         let x = window.screenX;
         let y = window.screenY;
         let vx = (Math.random() * 2) + 1;
@@ -38,11 +52,9 @@
                 x += vx;
                 y += vy;
 
-                // 画面端で反射
                 if (x <= 0 || x + w >= screen.availWidth) vx *= -1;
                 if (y <= 0 || y + h >= screen.availHeight) vy *= -1;
 
-                // ゴキブリ的な急加速
                 if (!boosted && Math.random() < 0.01) {
                     boosted = true;
                     boostTimer = Math.floor(Math.random() * 30) + 10;
@@ -50,7 +62,6 @@
                     vy = (Math.random() * 20 - 10) || 8;
                 }
 
-                // 加速終了 → 通常速度に戻す
                 if (boosted) {
                     boostTimer--;
                     if (boostTimer <= 0) {
@@ -68,6 +79,15 @@
         }
 
         moveWindow();
+
+        // クリックで増殖
+        document.body.addEventListener("click", () => {
+            for (let i = 0; i < 3; i++) {
+                const offsetX = Math.floor(Math.random() * 200);
+                const offsetY = Math.floor(Math.random() * 200);
+                window.open("lol.html", "_blank", `width=400,height=300,left=${offsetX},top=${offsetY}`);
+            }
+        });
     </script>
 </body>
 </html>
