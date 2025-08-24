@@ -7,8 +7,8 @@
         body {
             margin: 0;
             overflow: hidden;
-            background: black url("https://static.wikia.nocookie.net/malware-history/images/5/58/YouAreAnIdiot.gif/revision/latest?cb=20221111194639") center center no-repeat;
-            background-size: contain;
+            background: black url("idiot.gif") center center no-repeat;
+            background-size: contain; /* 4:3比率に収める */
             height: 100vh;
             width: 100vw;
         }
@@ -23,7 +23,7 @@
         const audio = document.getElementById("bgm");
 
         document.body.addEventListener("click", () => {
-            // 音楽開始（クリックで解禁）
+            // 音楽再生（クリックで確実にスタート）
             if (audio.paused) {
                 audio.play().catch(e => console.log("再生エラー:", e));
             }
