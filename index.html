@@ -1,132 +1,111 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <title>ホーム</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            margin: 0;
-            padding: 20px;
-        }
-        h1 {
-            color: #0066cc;
-            text-align: center;
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-        p {
-            font-size: 16px;
-            line-height: 1.5;
-            margin-bottom: 10px;
-        }
-        a {
-            color: #0066cc;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        .section {
-            background-color: #ffffff;
-            border: 1px solid #dddddd;
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .section strong {
-            font-size: 18px;
-            display: block;
-            margin-bottom: 5px;
-        }
-        .button {
-            display: inline-block;
-            padding: 10px 20px;
-            font-size: 16px;
-            color: #ffffff;
-            background-color: #99cc33;
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-            text-align: center;
-        }
-        .button:hover {
-            background-color: #88bb22;
-        }
-        .footer {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 14px;
-            color: #888888;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>SoftareParkへようこそ！</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      color: #0066cc;
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    .section {
+      background-color: #ffffff;
+      border: 1px solid #dddddd;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .section strong {
+      font-size: 18px;
+      display: block;
+      margin-bottom: 5px;
+    }
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 16px;
+      color: #ffffff;
+      background-color: #99cc33;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+      text-align: center;
+    }
+    .button:hover {
+      background-color: #88bb22;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 14px;
+      color: #888888;
+    }
+  </style>
 </head>
 <body>
-    <h1>SoftareParkへようこそ！</h1>
+  <h1>SoftareParkへようこそ！</h1>
 
-
-    <div class="section">
-        <div>
-            <strong>Windows XP特設サイト「どこでもXP」</strong>
-            <p>更新頻度 中</p>
-        </div>
-        <a class="button" href="/classic/xp/">アクセス</a>
-    </div>
-
-    <div class="section">
-        <div>
-            <strong>脱Windows特設サイト「No! Windows」</strong>
-            <p>更新頻度 大</p>
-        </div>
-        <a class="button" href="/classic/nowin/">アクセス</a>
-    </div>
-   <div class="section">
+  <div class="section">
     <div>
-        <strong>裏設定あり！「くじ引きツール」</strong>
-        <p>更新 バグ発見次第</p>
+      <strong>Windows XP特設サイト「どこでもXP」</strong>
+      <p>更新頻度 中</p>
+    </div>
+    <a class="button" href="/classic/xp/">アクセス</a>
+  </div>
+
+  <div class="section">
+    <div>
+      <strong>脱Windows特設サイト「No! Windows」</strong>
+      <p>更新頻度 大</p>
+    </div>
+    <a class="button" href="/classic/nowin/">アクセス</a>
+  </div>
+
+  <div class="section">
+    <div>
+      <strong>裏設定あり！「くじ引きツール」</strong>
+      <p>更新 バグ発見次第</p>
     </div>
     <a class="button" href="/classic/lottery">アクセス</a>
-</div>
-     <div class="section">
-        <div>
-            <strong>姉妹サイト Internet-Freedom</strong>
-            <p>更新頻度 N/A</p>
-        </div>
-        <a class="button" href="http://inter-freedom.f5.si">アクセス</a>
+  </div>
+
+  <div class="section">
+    <div>
+      <strong>姉妹サイト Internet-Freedom</strong>
+      <p>更新頻度 N/A</p>
     </div>
-<div class="section">
-    
+    <a class="button" href="http://inter-freedom.f5.si">アクセス</a>
+  </div>
 
-    <!-- idiotリンクを差し込む場所 -->
-    <div id="idiotLink"></div>
+  <!-- 隠しリンク表示エリア -->
+  <div class="section" id="idiotLink"></div>
 
-    <p class="footer">サーバー詳細:Github Pages</p>
+  <p class="footer">※互換性重視のXP向けのHTMLで作っています。古いデバイスでもアクセスできます。</p>
+  <p class="footer">※すべてのサイトで互換性があるわけではありません</p>
+  <p class="footer">※古い端末での不具合などは自己責任でお願いします</p>
+  <p class="footer">Copyright © 2024 SoftwarePark All Rights Reserved.</p>
 
-    <script>
-    // URLのクエリをチェック
+  <script>
     const params = new URLSearchParams(window.location.search);
     if (params.get("youareanidiot") === "true") {
-        document.getElementById("idiotLink").innerHTML = `
-            <a href="idiot.html" class="button" style="background-color:red;"
-               onclick="return confirm('you are an idiotを他人のPCなどで実行しないでください。いかなる損害があっても、責任を負いません。続行しますか？');">
-               You are an idiot for web
-            </a>
-        `;
+      document.getElementById("idiotLink").innerHTML = `
+        <a href="idiot.html?from=index" class="button" style="background-color:red;"
+           onclick="return confirm('you are an idiotを他人のPCなどで実行しないでください。いかなる損害があっても、責任を負いません。続行しますか？');">
+           You are an idiot for web
+        </a>
+      `;
     }
-</script>
-</body>
-</html>
-
-
-    <p class="footer">※互換性重視のXP向けのHTMLで作っています。古いデバイスでもアクセスできます。</p>
-    <p class="footer">※すべてのサイトで互換性があるわけではありません</p>
-    <p class="footer">※古い端末での不具合などは自己責任でお願いします</p>
-   
-    <p class="footer">Copyright © 2024 SoftwarePark All Rights Reserved.</p>
-
+  </script>
 </body>
 </html>
