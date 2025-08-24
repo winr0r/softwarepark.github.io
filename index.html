@@ -88,8 +88,8 @@
     <a class="button" href="http://inter-freedom.f5.si">アクセス</a>
   </div>
 
-  <!-- 隠しリンク表示エリア -->
-  <div class="section" id="idiotLink"></div>
+  <!-- 隠しリンク表示エリア（最初は非表示） -->
+  <div class="section" id="idiotLink" style="display:none;"></div>
 
   <p class="footer">※互換性重視のXP向けのHTMLで作っています。古いデバイスでもアクセスできます。</p>
   <p class="footer">※すべてのサイトで互換性があるわけではありません</p>
@@ -99,7 +99,9 @@
   <script>
     const params = new URLSearchParams(window.location.search);
     if (params.get("youareanidiot") === "true") {
-      document.getElementById("idiotLink").innerHTML = `
+      const idiotLink = document.getElementById("idiotLink");
+      idiotLink.style.display = "flex"; // 表示する
+      idiotLink.innerHTML = `
         <a href="idiot.html?from=index" class="button" style="background-color:red;"
            onclick="return confirm('you are an idiotを他人のPCなどで実行しないでください。いかなる損害があっても、責任を負いません。続行しますか？');">
            You are an idiot for web
