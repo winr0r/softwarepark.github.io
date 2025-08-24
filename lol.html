@@ -6,8 +6,8 @@
     <style>
         body {
             margin: 0;
-            background: black url("https://static.wikia.nocookie.net/malware-history/images/5/58/YouAreAnIdiot.gif/revision/latest?cb=20221111194639") center center no-repeat;
-            background-size: contain;
+            background: black url("idiot.gif") center center no-repeat;
+            background-size: contain; /* 4:3比率 */
             height: 100vh;
             width: 100vw;
         }
@@ -25,17 +25,16 @@
 
         let x = window.screenX;
         let y = window.screenY;
-        let vx = (Math.random() * 2) + 1; // 通常時のゆるい速度
+        let vx = (Math.random() * 2) + 1;
         let vy = (Math.random() * 2) + 1;
         const w = window.outerWidth;
         const h = window.outerHeight;
 
-        let boosted = false;   // 加速中かどうか
-        let boostTimer = 0;    // 加速が続く残りフレーム
+        let boosted = false;
+        let boostTimer = 0;
 
         function moveWindow() {
             try {
-                // 位置を更新
                 x += vx;
                 y += vy;
 
@@ -43,26 +42,26 @@
                 if (x <= 0 || x + w >= screen.availWidth) vx *= -1;
                 if (y <= 0 || y + h >= screen.availHeight) vy *= -1;
 
-                // ランダムに急加速する（ゴキブリの急発進）
-                if (!boosted && Math.random() < 0.01) { 
+                // ゴキブリ的な急加速
+                if (!boosted && Math.random() < 0.01) {
                     boosted = true;
-                    boostTimer = Math.floor(Math.random() * 30) + 10; // 10〜40フレーム加速
-                    vx = (Math.random() * 20 - 10) || 8;  // -10〜10 の高速速度
+                    boostTimer = Math.floor(Math.random() * 30) + 10;
+                    vx = (Math.random() * 20 - 10) || 8;
                     vy = (Math.random() * 20 - 10) || 8;
                 }
 
-                // 加速終了したら通常速度に戻す
+                // 加速終了 → 通常速度に戻す
                 if (boosted) {
                     boostTimer--;
                     if (boostTimer <= 0) {
                         boosted = false;
-                        vx = (Math.random() * 4 - 2) || 2; // 通常速度 -2〜2
+                        vx = (Math.random() * 4 - 2) || 2;
                         vy = (Math.random() * 4 - 2) || 2;
                     }
                 }
 
                 window.moveTo(x, y);
-                window.focus(); // 最前面に出す
+                window.focus();
             } catch (e) {}
 
             requestAnimationFrame(moveWindow);
