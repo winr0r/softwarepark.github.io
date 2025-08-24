@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>You are an idiot</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: black url("https://static.wikia.nocookie.net/malware-history/images/5/58/YouAreAnIdiot.gif/revision/latest?cb=20221111194639") center center no-repeat;
+            background-size: contain;
+            height: 100vh;
+            width: 100vw;
+        }
+    </style>
+</head>
+<body>
+    <audio id="bgm" loop>
+        <source src="idiot.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const audio = document.getElementById("bgm");
+
+        document.body.addEventListener("click", () => {
+            // 音楽開始（クリックで解禁）
+            if (audio.paused) {
+                audio.play().catch(e => console.log("再生エラー:", e));
+            }
+
+            // 新しいウィンドウを開く
+            window.open(
+                "lol.html",
+                "_blank",
+                "width=640,height=480,left=100,top=100"
+            );
+        });
+    </script>
+</body>
+</html>
