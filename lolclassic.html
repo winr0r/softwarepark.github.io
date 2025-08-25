@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+  <title>LOL</title>
+</head>
+<body bgcolor="black">
+  <center>
+    <img src="idiot.gif" width="480" height="360"><br>
+  </center>
+
+  <!-- サウンド再生（IE6専用） -->
+  <bgsound src="idiot.mp3" loop="infinite">
+
+  <script type="text/javascript">
+    var x = window.screenLeft;
+    var y = window.screenTop;
+    var vx = 5;
+    var vy = 3;
+    var w = 480;
+    var h = 360;
+
+    function moveWindow() {
+      try {
+        x += vx;
+        y += vy;
+
+        // 画面端で跳ね返る
+        if (x <= 0 || x + w >= screen.availWidth) vx = -vx;
+        if (y <= 0 || y + h >= screen.availHeight) vy = -vy;
+
+        window.moveTo(x, y);
+        window.focus();
+      } catch(e) {}
+    }
+
+    // IE6用 setInterval
+    setInterval(moveWindow, 50);
+
+    // ウィンドウをクリックするとさらに増殖
+    document.onmousedown = function() {
+      window.open("lolclassic.html", "", "width=480,height=360");
+    };
+  </script>
+</body>
+</html>
