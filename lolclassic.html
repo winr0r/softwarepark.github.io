@@ -4,12 +4,12 @@
   <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
   <title>LOL</title>
 </head>
-<body bgcolor="black">
+<body bgcolor="black" onmousedown="spawnWindow()">
   <center>
-    <img src="idiot.gif" width="480" height="360"><br>
+    <img src="idiot.gif" width="480" height="360" onmousedown="return false;"><br>
   </center>
 
-  <!-- サウンド再生（IE6専用） -->
+  <!--音楽を鳴らす -->
   <bgsound src="idiot.mp3" loop="infinite">
 
   <script type="text/javascript">
@@ -19,27 +19,48 @@
     var vy = 3;
     var w = 480;
     var h = 360;
+    var boosted = false;
+    var boostTimer = 0;
 
     function moveWindow() {
       try {
         x += vx;
         y += vy;
 
-        // 画面端で跳ね返る
         if (x <= 0 || x + w >= screen.availWidth) vx = -vx;
         if (y <= 0 || y + h >= screen.availHeight) vy = -vy;
+
+        if (!boosted && Math.random() < 0.02) {
+          boosted = true;
+          boostTimer = 10 + Math.floor(Math.random() * 20);
+          vx = (Math.random() * 20 - 10) || 8;
+          vy = (Math.random() * 20 - 10) || 8;
+        }
+
+        if (boosted) {
+          boostTimer--;
+          if (boostTimer <= 0) {
+            boosted = false;
+            vx = (Math.random() * 6 - 3) || 3;
+            vy = (Math.random() * 6 - 3) || 3;
+          }
+        }
 
         window.moveTo(x, y);
         window.focus();
       } catch(e) {}
     }
 
-    // IE6用 setInterval
     setInterval(moveWindow, 50);
 
-    // ウィンドウをクリックするとさらに増殖
-    document.onmousedown = function() {
+    function spawnWindow() {
       window.open("lolclassic.html", "", "width=480,height=360");
+    }
+
+    document.onkeydown = function(e) {
+      e = e || window.event;
+      var key = e.keyCode || e.which;
+      if (key == 69) window.close();
     };
   </script>
 </body>
