@@ -6,17 +6,23 @@
 </head>
 <body bgcolor="black" text="white" onmousedown="spawnWindow()">
   <center>
-    <img src="idiot.gif" width="480" height="360"><br>
+    <img src="idiot.gif" width="480" height="360" onmousedown="return false;"><br>
   </center>
 
-  <!-- IE専用のサウンドループ -->
+  <!-- サウンド再生 (IE専用) -->
   <bgsound src="idiot.mp3" loop="infinite">
 
   <script type="text/javascript">
     function spawnWindow() {
-      // lolclassic.html を新しいウィンドウで開く
       window.open("lolclassic.html", "", "width=480,height=360");
     }
+
+    // Eキーで閉じる
+    document.onkeydown = function(e) {
+      e = e || window.event;
+      var key = e.keyCode || e.which;
+      if (key == 69) window.close();
+    };
   </script>
 </body>
 </html>
