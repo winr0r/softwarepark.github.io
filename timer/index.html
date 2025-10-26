@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>タイマー</title>
+  <style>
+    body { font-family: sans-serif; text-align: center; margin-top: 50px; }
+    input, button { font-size: 1.2em; margin: 10px; }
+  </style>
+</head>
+<body>
+  <h1>タイマー</h1>
+  <label>時間（秒）: <input type="number" id="seconds" value="10"></label><br>
+  <button onclick="startTimer()">スタート</button>
+  <h2 id="countdown">準備中...</h2>
+  <audio id="alarm" src="fin.mp3" preload="auto"></audio>
+
+  <script>
+    var timer;
+    function startTimer() {
+      var sec = parseInt(document.getElementById("seconds").value, 10);
+      var countdown = document.getElementById("countdown");
+      var alarm = document.getElementById("alarm");
+
+      if (isNaN(sec) || sec <= 0) {
+        countdown.textContent = "正しい秒数を入力してください";
+        return;
+      }
+
+      countdown.textContent = sec + " 秒";
+      clearInterval(timer);
+      timer = setInterval(function() {
+        sec--;
+        if (sec > 0) {
+          countdown.textContent = sec + " 秒";
+        } else {
+          clearInterval(timer);
+          countdown.textContent = "時間です！";
+          alarm.play();
+        }
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
