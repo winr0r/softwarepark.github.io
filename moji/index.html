@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>ふしぎな透明文字コピペ</title>
+  <style>
+    body {
+      background: linear-gradient(to bottom right, #fff0f5, #e0ffff);
+      font-family: "Hiragino Maru Gothic ProN", "Yu Gothic", sans-serif;
+      color: #444;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: #ff69b4;
+      margin-bottom: 10px;
+    }
+
+    p.subtitle {
+      font-size: 14px;
+      color: #888;
+      margin-bottom: 30px;
+    }
+
+    .box {
+      background-color: #ffffff;
+      border: 2px dashed #ffb6c1;
+      border-radius: 15px;
+      padding: 20px;
+      margin: 0 auto 30px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 4px 8px rgba(255, 182, 193, 0.2);
+    }
+
+    .char-label {
+      font-weight: bold;
+      color: #ff69b4;
+      margin-bottom: 5px;
+    }
+
+    .invisible-text {
+      font-size: 20px;
+      padding: 10px;
+      background-color: #fefefe;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      user-select: all;
+      white-space: pre;
+    }
+
+    .copy-button {
+      background-color: #ff99cc;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      font-size: 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-bottom: 10px;
+    }
+
+    .copy-button:hover {
+      background-color: #ff66a3;
+    }
+
+    .footer {
+      font-size: 12px;
+      color: #aaa;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🌸 ふしぎな透明文字コピペ 🌸</h1>
+  <p class="subtitle">SNSの名前や空白装飾に使えるよ！クリックでコピー✨</p>
+
+    <div class="box">
+    <div class="char-label">クメール語母音記号（U+17B5） 【おすすめ】</div>
+    <div class="invisible-text" id="khmer2">\u17B5</div>
+    <button class="copy-button" onclick="copyText('\u17B5')">コピー</button>
+  </div>
+  
+  <div class="box">
+    <div class="char-label">ゼロ幅スペース（ZWSP）</div>
+    <div class="invisible-text" id="zwsp">\u200B</div>
+    <button class="copy-button" onclick="copyText('\u200B')">コピー</button>
+  </div>
+
+  <div class="box">
+    <div class="char-label">ゼロ幅ノンジョイナー（ZWNJ）</div>
+    <div class="invisible-text" id="zwnj">\u200C</div>
+    <button class="copy-button" onclick="copyText('\u200C')">コピー</button>
+  </div>
+
+  <div class="box">
+    <div class="char-label">ゼロ幅ジョイナー（ZWJ）</div>
+    <div class="invisible-text" id="zwj">\u200D</div>
+    <button class="copy-button" onclick="copyText('\u200D')">コピー</button>
+  </div>
+
+  <div class="box">
+    <div class="char-label">クメール語母音記号（U+17B4）</div>
+    <div class="invisible-text" id="khmer1">\u17B4</div>
+    <button class="copy-button" onclick="copyText('\u17B4')">コピー</button>
+  </div>
+
+  <div class="box">
+    <div class="char-label">モンゴル語母音セパレータ（U+180E）</div>
+    <div class="invisible-text" id="mongolian">\u180E</div>
+    <button class="copy-button" onclick="copyText('\u180E')">コピー</button>
+  </div>
+
+  <div class="footer">
+    © 2025 ふしぎな透明文字コピペサイト<br>
+    ※一部の文字は表示や動作が環境により異なる場合があります。
+  </div>
+
+  <script>
+    function copyText(char) {
+      navigator.clipboard.writeText(char).then(() => {
+        alert("コピーしました！");
+      }).catch(err => {
+        alert("コピーに失敗しました：" + err);
+      });
+    }
+  </script>
+</body>
+</html>
