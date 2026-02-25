@@ -2,27 +2,27 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>ふしぎな透明文字コピペ</title>
+  <title>透明文字コピペ</title>
   <style>
     body {
       background-color: #ffffff;
       color: #000000;
-      font-family: "Courier New", monospace;
+      font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
       font-size: 16px;
       margin: 0;
       padding: 0;
     }
 
     .container {
-      width: 760px;
-      margin: 0 auto;
+      max-width: 600px; /* 幅をレスポンシブに調整 */
+      margin: 20px auto;
       padding: 20px;
       border: 3px double #000080;
       background-color: #f8f8f8;
     }
 
     h1 {
-      font-size: 28px;
+      font-size: 24px;
       text-align: center;
       color: #ff0000;
       margin-bottom: 10px;
@@ -41,35 +41,39 @@
       background-color: #ffffff;
       padding: 15px;
       margin-bottom: 20px;
+      text-align: center;
     }
 
     .char-label {
       font-weight: bold;
       color: #800000;
-      margin-bottom: 5px;
+      margin-bottom: 10px;
+      text-align: left;
     }
 
     .invisible-text {
       font-size: 18px;
-      padding: 8px;
+      padding: 15px;
       background-color: #eeeeee;
-      border: 1px solid #000000;
+      border: 1px dashed #999;
       margin-bottom: 10px;
       user-select: all;
-      white-space: pre;
+      min-height: 1.2em;
     }
 
     .copy-button {
       background-color: #00cc00;
       color: #ffffff;
       border: 2px outset #008000;
-      padding: 6px 12px;
-      font-size: 14px;
+      padding: 10px 20px;
+      font-size: 16px;
       cursor: pointer;
+      width: 100%;
+      font-weight: bold;
     }
 
-    .copy-button:hover {
-      background-color: #009900;
+    .copy-button:active {
+      border-style: inset;
     }
 
     .footer {
@@ -84,57 +88,65 @@
 </head>
 <body>
   <div class="container">
-    <h1>ふしぎな透明文字コピペ</h1>
-    <p class="subtitle">SNSの名前や空白装飾に使えるよ！クリックでコピー</p>
+    <h1>透明文字コピペ</h1>
+    <p class="subtitle">SNSの名前や空白装飾に使える！ボタンでコピー</p>
 
     <div class="box">
       <div class="char-label">クメール語母音記号（U+17B5） 【おすすめ】</div>
-      <div class="invisible-text">\u17B5</div>
-      <button class="copy-button" onclick="copyText('\u17B5')">コピー</button>
+      <div class="invisible-text">&#x17B5;</div>
+      <button class="copy-button" onclick="copyText('\u17B5')">コピーする</button>
     </div>
 
     <div class="box">
       <div class="char-label">ゼロ幅スペース（ZWSP）</div>
-      <div class="invisible-text">\u200B</div>
-      <button class="copy-button" onclick="copyText('\u200B')">コピー</button>
+      <div class="invisible-text">&#x200B;</div>
+      <button class="copy-button" onclick="copyText('\u200B')">コピーする</button>
     </div>
 
     <div class="box">
       <div class="char-label">ゼロ幅ノンジョイナー（ZWNJ）</div>
-      <div class="invisible-text">\u200C</div>
-      <button class="copy-button" onclick="copyText('\u200C')">コピー</button>
+      <div class="invisible-text">&#x200C;</div>
+      <button class="copy-button" onclick="copyText('\u200C')">コピーする</button>
     </div>
 
     <div class="box">
       <div class="char-label">ゼロ幅ジョイナー（ZWJ）</div>
-      <div class="invisible-text">\u200D</div>
-      <button class="copy-button" onclick="copyText('\u200D')">コピー</button>
+      <div class="invisible-text">&#x200D;</div>
+      <button class="copy-button" onclick="copyText('\u200D')">コピーする</button>
     </div>
 
     <div class="box">
       <div class="char-label">クメール語母音記号（U+17B4）</div>
-      <div class="invisible-text">\u17B4</div>
-      <button class="copy-button" onclick="copyText('\u17B4')">コピー</button>
+      <div class="invisible-text">&#x17B4;</div>
+      <button class="copy-button" onclick="copyText('\u17B4')">コピーする</button>
     </div>
 
     <div class="box">
       <div class="char-label">モンゴル語母音セパレータ（U+180E）</div>
-      <div class="invisible-text">\u180E</div>
-      <button class="copy-button" onclick="copyText('\u180E')">コピー</button>
+      <div class="invisible-text">&#x180E;</div>
+      <button class="copy-button" onclick="copyText('\u180E')">コピーする</button>
     </div>
 
     <div class="footer">
-      © 2025 ふしぎな透明文字コピペサイト<br>
-      ※一部の文字は表示や動作が環境により異なる場合があります。
+      © 2026 ふしぎな透明文字コピペサイト<br>
+      ※環境によりコピーした文字が「 」や「?」に見えることがありますが、仕様です。
     </div>
   </div>
 
   <script>
     function copyText(char) {
+      // Clipboard APIの実行
+      if (!navigator.clipboard) {
+        // 古いブラウザ用のフォールバック（簡易版）
+        alert("お使いのブラウザは対応していません");
+        return;
+      }
+
       navigator.clipboard.writeText(char).then(() => {
-        alert("コピーしました！");
+        alert("コピーしました！\nSNSなどの入力欄に貼り付け。");
       }).catch(err => {
-        alert("コピーに失敗しました：" + err);
+        console.error('コピー失敗:', err);
+        alert("コピーに失敗しました。もう一度試してください。");
       });
     }
   </script>
